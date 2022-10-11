@@ -42,7 +42,9 @@ base64加密字符串 `encodeBase64`
 
 删除cookie `removeCookie`
 
-格式化日期 `formatDate`
+格式化日期时间1 `formatDate`
+
+格式化日期时间2 `formatTime`
 
 计算两个时间的间隔 `getTimeInterval`
 
