@@ -990,34 +990,89 @@
   };
 
   /**
-   * 树形数据转换（根据id，pid）
-   * @param {Array} data 需要转换的数组
-   * @param {String} id id标识 默认id
-   * @param {String} pid pid标识 默认pid
-   * @returns 生成的树形结构数据
+   * 扁平数据转树形数据
+   * @param {*} data 数据源
+   * @param {*} id id字段 默认 'id'
+   * @param {*} parentId 父节点字段 默认 'pid'
+   * @param {*} children 孩子节点字段 默认 'children'
    */
 
-  var treeDataTranslate$1 = function (data, id, pid) {
-    if ( id === void 0 ) id = "id";
-    if ( pid === void 0 ) pid = "pid";
+  var treeDataTranslate$1 = function (data, id, parentId, children) {
+    var config = {
+      id: id || "id",
+      parentId: parentId || "pid",
+      childrenList: children || "children",
+    };
 
-    var res = [];
-    var temp = {};
-    for (var i = 0; i < data.length; i++) {
-      temp[data[i][id]] = data[i];
-    }
-    for (var k = 0; k < data.length; k++) {
-      if (!temp[data[k][pid]] || data[k][id] === data[k][pid]) {
-        res.push(data[k]);
-        continue;
+    var childrenListMap = {};
+    var nodeIds = {};
+    var tree = [];
+
+    data.forEach(function (d) {
+      var parentId = d[config.parentId];
+      if (childrenListMap[parentId] == null) {
+        childrenListMap[parentId] = [];
       }
-      if (!temp[data[k][pid]]["children"]) {
-        temp[data[k][pid]]["children"] = [];
+      nodeIds[d[config.id]] = d;
+      childrenListMap[parentId].push(d);
+    });
+
+    data.forEach(function (d) {
+      var parentId = d[config.parentId];
+      if (nodeIds[parentId] == null) {
+        tree.push(d);
       }
-      temp[data[k][pid]]["children"].push(data[k]);
-      data[k]["_level"] = (temp[data[k][pid]]._level || 0) + 1;
+    });
+
+    tree.forEach(function (t) {
+      adaptToChildrenList(t);
+    });
+
+    function adaptToChildrenList(o) {
+      if (childrenListMap[o[config.id]] !== null) {
+        o[config.childrenList] = childrenListMap[o[config.id]];
+      }
+      if (o[config.childrenList]) {
+        o[config.childrenList].forEach(function (c) {
+          adaptToChildrenList(c);
+        });
+      }
     }
-    return res;
+    return tree;
+  };
+
+  /**
+   * 树形数据转扁平数据
+   * @param {*} data 数据源
+   * @param {*} id id字段 默认 'id'
+   * @param {*} parentId 父节点字段 默认 'pid'
+   * @param {*} children 孩子节点字段 默认 'children'
+   */
+
+  var treeDataTranslateFlat$1 = function (data, id, parentId, children) {
+    var config = {
+      id: id || "id",
+      parentId: parentId || "pid",
+      children: children || "children",
+    };
+    var result = [];
+    data.forEach(function (item) {
+      var loop = function (data) {
+        var newData = Object.assign({}, data);
+        if (newData.hasOwnProperty(config.children)) {
+          delete newData[config.children];
+        }
+        result.push(Object.assign({}, newData));
+        var child = data[config.children];
+        if (child) {
+          for (var i = 0; i < child.length; i++) {
+            loop(child[i]);
+          }
+        }
+      };
+      loop(item);
+    });
+    return result;
   };
 
   var arrTrans = arrTrans$1;
@@ -1060,6 +1115,7 @@
   var sortAscii = sortAscii$1;
   var throttle = throttle$1;
   var treeDataTranslate = treeDataTranslate$1;
+  var treeDataTranslateFlat = treeDataTranslateFlat$1;
 
   var lib = {
     arrTrans: arrTrans,
@@ -1102,6 +1158,7 @@
     sortAscii: sortAscii,
     throttle: throttle,
     treeDataTranslate: treeDataTranslate,
+    treeDataTranslateFlat: treeDataTranslateFlat,
   };
 
   return lib;

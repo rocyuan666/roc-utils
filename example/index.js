@@ -1,8 +1,8 @@
 /**
  * 功能示例
  */
-const rocUtils = require("../lib"); // debug
-// const rocUtils = require("../dist/rocUtils.min"); // dist
+// const rocUtils = require("../lib"); // debug
+const rocUtils = require("../dist/rocUtils.min"); // dist
 
 // 一维数组转换为多维数组
 // arrTransT();
@@ -317,12 +317,12 @@ function sortAsciiT() {
   console.log(res); // A789a456b123
 }
 
-// 扁平数据转树形数据（根据id，pid）
+// 扁平数据转树形数据
 // treeDataTranslateT();
 function treeDataTranslateT() {
   const data = [
     { id: 1, pid: "" },
-    { id: 2, pid: 1 },
+    { id: 2, pid: 1, title: "123" },
     { id: 3, pid: 2 },
     { id: 3, pid: 1 },
     { id: 3, pid: 1 },
@@ -338,17 +338,53 @@ function treeDataTranslateT() {
           {
             id: 2,
             pid: 1,
-            _level: 1,
+            title: "123",
             children: [
-              { id: 3, pid: 2, _level: 2 },
-              { id: 3, pid: 2, _level: 2 },
+              { id: 3, pid: 2 },
+              { id: 3, pid: 2 },
             ],
           },
-          { id: 3, pid: 1, _level: 1 },
-          { id: 3, pid: 1, _level: 1 },
+          { id: 3, pid: 1 },
+          { id: 3, pid: 1 },
         ],
       },
     ]
   */
-  console.log(res);
+  console.log(JSON.stringify(res));
+}
+
+// 树形数据转扁平数据
+// treeDataTranslateFlatT();
+function treeDataTranslateFlatT() {
+  const treeData = [
+    {
+      id: 1,
+      pid: "",
+      children: [
+        {
+          id: 2,
+          pid: 1,
+          title: "123",
+          children: [
+            { id: 3, pid: 2 },
+            { id: 3, pid: 2 },
+          ],
+        },
+        { id: 3, pid: 1 },
+        { id: 3, pid: 1 },
+      ],
+    },
+  ];
+  const res = rocUtils.treeDataTranslateFlat(treeData);
+  /*
+    [
+      { id: 1, pid: "" },
+      { id: 2, pid: 1, title: "123" },
+      { id: 3, pid: 2 },
+      { id: 3, pid: 2 },
+      { id: 3, pid: 1 },
+      { id: 3, pid: 1 },
+    ]
+  */
+  console.log(JSON.stringify(res));
 }
