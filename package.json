@@ -3,6 +3,8 @@
   "version": "0.1.2",
   "description": "roc common javascript utils",
   "main": "dist/rocUtils.js",
+  "unpkg": "dist/rocUtils.min.js",
+  "jsdelivr": "dist/rocUtils.min.js",
   "scripts": {
     "dev": "nodemon ./example/index.js",
     "lib": "rollup -c rollup.config.js"
