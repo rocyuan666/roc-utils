@@ -2,7 +2,7 @@
 
 js 常用 utils
 
-## 使用
+## 安装
 
 ```bash
 npm install roc-utils
@@ -10,9 +10,13 @@ or
 yarn add roc-utils
 ```
 
-## 示例
+## 使用
 
-` @/example/index.js`
+```javascript
+import rocUtils from "roc-utils";
+
+rocUtils.functionName();
+```
 
 ## 介绍
 
