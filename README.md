@@ -6,8 +6,6 @@
 
 js常用utils
 
-建议在 `.eslintignore` 文件中屏蔽本文件
-
 树形数据转换（根据id，pid） `treeDataTranslate`
 
 随机生成十六进制颜色值 `randomHexColor`
