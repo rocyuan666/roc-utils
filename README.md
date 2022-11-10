@@ -16,7 +16,9 @@ yarn add roc-utils
 
 ## 介绍
 
-树形数据转换（根据 id，pid） `treeDataTranslate`
+树形数据转扁平数据 `treeDataTranslateFlat`
+
+扁平数据转树形数据 `treeDataTranslate`
 
 随机生成十六进制颜色值 `randomHexColor`
 
