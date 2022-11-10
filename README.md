@@ -1,20 +1,30 @@
 # roc-utils
 
+js 常用 utils
 
-个人网站： [https://luojing.top](https://luojing.top)
+## 使用
 
+```bash
+npm install roc-utils
+or
+yarn add roc-utils
+```
 
-js常用utils
+示例:
 
-树形数据转换（根据id，pid） `treeDataTranslate`
+` @/example/index.js`
+
+## 介绍
+
+树形数据转换（根据 id，pid） `treeDataTranslate`
 
 随机生成十六进制颜色值 `randomHexColor`
 
-随机生成RGB颜色 `randomRgbColor`
+随机生成 RGB 颜色 `randomRgbColor`
 
-随机生成RGBA颜色 `randomRgbaColor`
+随机生成 RGBA 颜色 `randomRgbaColor`
 
-按ASCII码从小到大排序对象(根据Key) `sort_ascii`
+按 ASCII 码从小到大排序对象(根据 Key) `sortAscii`
 
 本周第一天 `showWeekFirstDay`
 
@@ -24,9 +34,11 @@ js常用utils
 
 本月最后一天 `showMonthLastDay`
 
-获取url路径的query参数 `getUrlQuery`
+获取 url 路径的 query 参数 `getUrlQuery`
 
-base64加密字符串 `encodeBase64`
+base64 加密字符串 `encodeBase64`
+
+base64 解密字符串 `decodeBase64`
 
 获取俩数之间的随机整数 `randomNum`
 
@@ -34,15 +46,9 @@ base64加密字符串 `encodeBase64`
 
 节流方法 `throttle`
 
-设置cookie `setCookie`
+格式化日期时间 1 `formatDate`
 
-获取cookie `getCookie`
-
-删除cookie `removeCookie`
-
-格式化日期时间1 `formatDate`
-
-格式化日期时间2 `formatTime`
+格式化日期时间 2 `formatTime`
 
 计算两个时间的间隔 `getTimeInterval`
 
@@ -50,7 +56,9 @@ base64加密字符串 `encodeBase64`
 
 一维数组转换为多维数组 `arrTrans`
 
-校验经纬度 `checkLongLat`
+校验经度 `checkLong`
+
+校验纬度 `checkLat`
 
 校验邮箱 `checkEmail`
 
