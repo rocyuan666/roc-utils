@@ -1,8 +1,8 @@
 {
   "name": "roc-utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "roc common javascript utils",
-  "main": "dist/rocUtils.min.js",
+  "main": "dist/rocUtils.js",
   "scripts": {
     "dev": "nodemon ./example/index.js",
     "lib": "rollup -c rollup.config.js"
