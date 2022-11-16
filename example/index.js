@@ -93,26 +93,18 @@ function combineURLsT() {
 // 防抖
 debounceT();
 function debounceT() {
-  const res = rocUtils.debounce(
-    function () {
-      console.log("执行");
-    },
-    1000,
-    true
-  );
+  const res = rocUtils.debounce(function () {
+    console.log("执行");
+  }, 1000);
   console.log(res); // Function 防抖方法
 }
 
 // 节流
 throttleT();
 function throttleT() {
-  const res = rocUtils.throttle(
-    function () {
-      console.log(执行);
-    },
-    1000,
-    true
-  );
+  const res = rocUtils.throttle(function () {
+    console.log(执行);
+  }, 1000);
   console.log(res); // Function 节流方法
 }
 
