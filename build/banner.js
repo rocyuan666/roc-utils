@@ -7,7 +7,7 @@
 const { name, version, author, license } = require("../package.json");
 
 const banner = 
-`/*!
+`/*
   * 常用javascript utils 方法
   * ${name} v${version}
   * (c) 2020-${new Date().getFullYear()} ${author}
