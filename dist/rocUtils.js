@@ -1,4 +1,4 @@
-/*!
+/*
   * 常用javascript utils 方法
   * roc-utils v0.1.6
   * (c) 2020-2022 rocyuan
@@ -1179,6 +1179,44 @@
 	  return result;
 	};
 
+	/**
+	 * 创建UUID
+	 * @param {Number} len uuid的长度
+	 * @param {Boolean} firstU 将返回的首字母置为"u"
+	 * @param {Nubmer} radix 生成uuid的基数(意味着返回的字符串都是这个基数),2-二进制,8-八进制,10-十进制,16-十六进制
+	 */
+
+	var createUUID$1 = function (len, firstU, radix) {
+	  if ( len === void 0 ) len = 32;
+	  if ( firstU === void 0 ) firstU = true;
+	  if ( radix === void 0 ) radix = null;
+
+	  var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
+	  var uuid = [];
+	  radix = radix || chars.length;
+
+	  if (len) {
+	    for (var i = 0; i < len; i++) { uuid[i] = chars[0 | (Math.random() * radix)]; }
+	  } else {
+	    var r;
+	    uuid[8] = uuid[13] = uuid[18] = uuid[23] = "-";
+	    uuid[14] = "4";
+
+	    for (var i$1 = 0; i$1 < 36; i$1++) {
+	      if (!uuid[i$1]) {
+	        r = 0 | (Math.random() * 16);
+	        uuid[i$1] = chars[i$1 == 19 ? (r & 0x3) | 0x8 : r];
+	      }
+	    }
+	  }
+	  if (firstU) {
+	    uuid.shift();
+	    return "u" + uuid.join("");
+	  } else {
+	    return uuid.join("");
+	  }
+	};
+
 	var arrTrans = arrTrans$1;
 	var asyncTasks = asyncTasks$1;
 	var checkCarNumber = checkCarNumber$1;
@@ -1220,6 +1258,7 @@
 	var throttle = throttle$1;
 	var treeDataTranslate = treeDataTranslate$1;
 	var treeDataTranslateFlat = treeDataTranslateFlat$1;
+	var createUUID = createUUID$1;
 
 	var lib = {
 	  arrTrans: arrTrans,
@@ -1263,6 +1302,7 @@
 	  throttle: throttle,
 	  treeDataTranslate: treeDataTranslate,
 	  treeDataTranslateFlat: treeDataTranslateFlat,
+	  createUUID: createUUID,
 	};
 
 	return lib;

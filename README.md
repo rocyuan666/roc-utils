@@ -391,6 +391,13 @@ function sortAsciiT() {
   const res = rocUtils.sortAscii(obj);
   console.log(res); // A789a456b123
 }
+
+// 创建UUID
+createUUIDT();
+function createUUIDT() {
+  const res = rocUtils.createUUID();
+  console.log(res); // u4RY4UVwCS6lHTGO7UYlNYBpG6EpSu9A (随机UUID)
+}
 ```
 
 ## 介绍
@@ -476,3 +483,5 @@ base64 解密字符串 `decodeBase64`
 深度合并对象，只支持合并两个对象，该方法不会改变原有的对象 `deepMargeObject`
 
 生成指定长度的随机字符串 `randomString`
+
+创建 UUID `createUUID`

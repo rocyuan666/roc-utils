@@ -1,6 +1,6 @@
 {
   "name": "roc-utils",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "roc common javascript utils",
   "main": "dist/rocUtils.js",
   "unpkg": "dist/rocUtils.min.js",

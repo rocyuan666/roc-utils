@@ -380,3 +380,10 @@ function treeDataTranslateFlatT() {
   */
   console.log(JSON.stringify(res));
 }
+
+// 创建UUID
+createUUIDT();
+function createUUIDT() {
+  const res = rocUtils.createUUID();
+  console.log(res); // u4RY4UVwCS6lHTGO7UYlNYBpG6EpSu9A (随机UUID)
+}
