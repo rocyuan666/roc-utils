@@ -387,3 +387,10 @@ function createUUIDT() {
   const res = rocUtils.createUUID();
   console.log(res); // u4RY4UVwCS6lHTGO7UYlNYBpG6EpSu9A (随机UUID)
 }
+
+// md5加密
+md5T();
+function md5T() {
+  const res = rocUtils.md5("rocyuan");
+  console.log(res); // 284c3a05ac2cc4898ab9ec716d58d3b6
+}
