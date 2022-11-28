@@ -1,6 +1,6 @@
 /*
   * 常用javascript utils 方法
-  * roc-utils v0.1.8
+  * roc-utils v0.1.9
   * (c) 2020-2022 rocyuan
   * Email rocyuan666@163.com
   * Released under the MIT License.
@@ -1148,15 +1148,11 @@
 	/**
 	 * 树形数据转扁平数据
 	 * @param {*} data 数据源
-	 * @param {*} id id字段 默认 'id'
-	 * @param {*} parentId 父节点字段 默认 'pid'
 	 * @param {*} children 孩子节点字段 默认 'children'
 	 */
 
-	var treeDataTranslateFlat$1 = function (data, id, parentId, children) {
+	var treeDataTranslateFlat$1 = function (data, children) {
 	  var config = {
-	    id: id || "id",
-	    parentId: parentId || "pid",
 	    children: children || "children",
 	  };
 	  var result = [];
