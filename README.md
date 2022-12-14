@@ -1,5 +1,8 @@
 # roc-utils
 
+[![npm version](https://img.shields.io/npm/v/roc-utils.svg?logo=npm&style=flat-square)](https://www.npmjs.com/package/roc-utils)
+[![npm downloads](https://img.shields.io/npm/dt/roc-utils.svg?style=flat-square)](https://www.npmjs.com/package/roc-utils)
+
 js 常用 utils
 
 ## 安装
