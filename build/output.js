@@ -10,14 +10,14 @@ const { banner } = require("./banner");
 const baseOutput = {
   dir: "dist",
   name: "rocUtils",
-  entryFileNames: "rocUtils.js",
+  entryFileNames: "roc-utils.js",
   format: "umd",
   banner,
   sourcemap: false,
   sourcemapExcludeSources: false,
 };
 const minOutput = Object.assign({}, baseOutput, {
-  entryFileNames: "rocUtils.min.js",
+  entryFileNames: "roc-utils.min.js",
   plugins: [terser()],
 });
 
