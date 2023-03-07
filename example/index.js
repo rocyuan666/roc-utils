@@ -2,7 +2,7 @@
  * 功能示例
  */
 // const rocUtils = require("../lib"); // debug
-const rocUtils = require("../dist/rocUtils.min"); // dist
+const rocUtils = require("../dist/roc-utils.min"); // dist
 
 // 一维数组转换为多维数组
 arrTransT();
@@ -393,4 +393,12 @@ md5T();
 function md5T() {
   const res = rocUtils.md5("rocyuan");
   console.log(res); // 284c3a05ac2cc4898ab9ec716d58d3b6
+}
+
+// 数组降维，将多维数组转换为一维数组
+flattenT()
+function flattenT() {
+  const arr = [1, [2, 3, [4, 5], 6], 7, 8, [9, 10]];
+  const newArr = rocUtils.flatten(arr);
+  console.log(newArr); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }

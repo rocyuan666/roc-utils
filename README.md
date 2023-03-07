@@ -408,6 +408,14 @@ function md5T() {
   const res = rocUtils.md5("rocyuan");
   console.log(res); // 284c3a05ac2cc4898ab9ec716d58d3b6
 }
+
+// 数组降维，将多维数组转换为一维数组
+flattenT()
+function flattenT() {
+  const arr = [1, [2, 3, [4, 5], 6], 7, 8, [9, 10]];
+  const newArr = rocUtils.flatten(arr);
+  console.log(newArr); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
 ```
 
 ## 介绍
@@ -497,3 +505,5 @@ base64 解密字符串 `decodeBase64`
 创建 UUID `createUUID`
 
 md5加密 `md5`
+
+数组降维，将多维数组转换为一维数组 `flatten`

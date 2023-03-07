@@ -1,6 +1,6 @@
 /*
   * 常用javascript utils 方法
-  * roc-utils v0.2.1
+  * roc-utils v0.2.2
   * (c) 2020-2023 rocyuan
   * Email rocyuan666@163.com
   * Released under the MIT License.
@@ -739,7 +739,7 @@
 	 * @return {Boolean} true：是；false：不是；
 	 */
 
-	var isArray$1 = function (val) {
+	var isArray$2 = function (val) {
 	  return Object.prototype.toString.call(val) === "[object Array]";
 	};
 
@@ -1444,6 +1444,31 @@
 	  return hex_md5(str);
 	};
 
+	var isArray$1 = isArray$2;
+
+	/**
+	 * 数组降维，将多维数组转换为一维数组
+	 * @param {Array} array 需要变平的数组
+	 * @returns {Array} 返回扁平的数组
+	 */
+	var flatten$1 = function (array) {
+	  var result = [];
+	  _flatten(array, result);
+	  return result;
+	};
+
+	function _flatten(array, result) {
+	  for (var i = 0; i < array.length; i++) {
+	    var value = array[i];
+	    if (isArray$1(value)) {
+	      _flatten(value, result);
+	    }
+	    else {
+	      result.push(value);
+	    }
+	  }
+	}
+
 	var arrTrans = arrTrans$1;
 	var asyncTasks = asyncTasks$1;
 	var checkCarNumber = checkCarNumber$1;
@@ -1464,7 +1489,7 @@
 	var getTimeInterval = getTimeInterval$1;
 	var getUrlQuery = getUrlQuery$1;
 	var isAbsoluteURL = isAbsoluteURL$1;
-	var isArray = isArray$1;
+	var isArray = isArray$2;
 	var isBoolean = isBoolean$1;
 	var isDate = isDate$1;
 	var isFunction = isFunction$1;
@@ -1487,6 +1512,7 @@
 	var treeDataTranslateFlat = treeDataTranslateFlat$1;
 	var createUUID = createUUID$1;
 	var md5 = md5$1;
+	var flatten = flatten$1;
 
 	var lib = {
 	  arrTrans: arrTrans,
@@ -1532,6 +1558,7 @@
 	  treeDataTranslateFlat: treeDataTranslateFlat,
 	  createUUID: createUUID,
 	  md5: md5,
+	  flatten: flatten,
 	};
 
 	return lib;
