@@ -1,8 +1,8 @@
 /**
  * 功能示例
  */
-// const rocUtils = require("../lib"); // debug
-const rocUtils = require("../dist/roc-utils.min"); // dist
+const rocUtils = require("../lib"); // debug
+// const rocUtils = require("../dist/roc-utils.min"); // dist
 
 // 一维数组转换为多维数组
 arrTransT();
@@ -16,6 +16,7 @@ function arrTransT() {
 asyncTasksT();
 async function asyncTasksT() {
   // 假设 pFn 方法是某个请求
+  /**@type {Promise<String>} */
   const pFn = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve("成功");
@@ -102,9 +103,14 @@ function debounceT() {
 // 节流
 throttleT();
 function throttleT() {
-  const res = rocUtils.throttle(function () {
-    console.log(执行);
-  }, 1000);
+  /**
+   * 节流测试
+   * @param {String} massage 
+   */
+  function test(massage) {
+    console.log(massage);
+  }
+  const res = rocUtils.throttle(test, 1000);
   console.log(res); // Function 节流方法
 }
 
