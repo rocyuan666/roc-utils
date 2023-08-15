@@ -1,6 +1,6 @@
 /*
   * 常用javascript utils 方法
-  * roc-utils v0.2.2
+  * roc-utils v0.2.3
   * (c) 2020-2023 rocyuan
   * Email rocyuan666@163.com
   * Released under the MIT License.
@@ -15,9 +15,10 @@
 
 	/**
 	 * 一维数组转换为多维数组
-	 * @param {Number} num 多维数组的个数
-	 * @param {Array} arr 需要转换的数组
-	 * @return {Arrayg} iconsArr 多维数组
+	 * @template T
+	 * @param {Number} num - 多维数组的个数
+	 * @param {Array<T>} arr - 需要转换的数组
+	 * @return {Array<T>} - iconsArr 多维数组
 	 * */
 
 	var arrTrans$1 = function (num, arr) {
@@ -34,7 +35,10 @@
 
 	/**
 	 * 同步 try catch 的进一步封装处理
-	 * 使用方法：
+	 * @template T
+	 * @param {Promise<T>} promise - 需要处理的promise方法
+	 * @returns {Promise<T>} - 处理过的promise方法
+	 * @example
 	 * let [err, res] = await rocUtils.asyncTasks(Promise函数);
 	 * if(res) 成功
 	 * if(err) 失败
@@ -50,8 +54,8 @@
 
 	/**
 	 * 校验车牌号
-	 * @param {String} data 车牌号
-	 * @return {Boolean} false: 错误  true: 正确
+	 * @param {String} data - 车牌号
+	 * @return {Boolean} - false: 错误  true: 正确
 	 */
 
 	var checkCarNumber$1 = function (data) {
@@ -65,8 +69,8 @@
 
 	/**
 	 * 校验邮编
-	 * @param {String} data 邮编
-	 * @return {Boolean} false: 错误  true: 正确
+	 * @param {String} data - 邮编
+	 * @return {Boolean} - false: 错误  true: 正确
 	 */
 
 	var checkCodeNumber$1 = function (data) {
@@ -80,8 +84,8 @@
 
 	/**
 	 * 统一社会信用代码
-	 * @param {String} data 统一社会信用代码
-	 * @return {Boolean} false: 错误  true: 正确
+	 * @param {String} data - 统一社会信用代码
+	 * @return {Boolean} - false: 错误  true: 正确
 	 */
 
 	var checkCompanyIdCard$1 = function (data) {
@@ -95,8 +99,8 @@
 
 	/**
 	 * 校验邮箱
-	 * @param {String} data 邮箱
-	 * @return {Boolean} false: 错误  true: 正确
+	 * @param {String} data - 邮箱
+	 * @return {Boolean} - false: 错误  true: 正确
 	 */
 
 	var checkEmail$1 = function (data) {
@@ -110,8 +114,8 @@
 
 	/**
 	 * 验证身份证号码是否合法
-	 * @param {String} data 身份证号
-	 * @return {Boolean} false: 不合法 true: 合法
+	 * @param {String} data - 身份证号
+	 * @return {Boolean} - false: 不合法 true: 合法
 	 */
 
 	var checkIdcard$1 = function (data) {
@@ -182,8 +186,8 @@
 
 	/**
 	 * 校验纬度
-	 * @param {String} latitude 纬度
-	 * @return {Boolean} false: 错误  true: 正确
+	 * @param {String} latitude - 纬度
+	 * @return {Boolean} - false: 错误  true: 正确
 	 */
 
 	var checkLat$1 = function (latitude) {
@@ -197,8 +201,8 @@
 
 	/**
 	 * 校验经度
-	 * @param {String} longitude 经度
-	 * @return {Boolean} false: 错误  true: 正确
+	 * @param {String} longitude - 经度
+	 * @return {Boolean} - false: 错误  true: 正确
 	 */
 
 	var checkLong$1 = function (longitude) {
@@ -212,8 +216,8 @@
 
 	/**
 	 * 校验电话号码
-	 * @param {String} data 电话号码
-	 * @return {Boolean} false: 错误  true: 正确
+	 * @param {String} data - 电话号码
+	 * @return {Boolean} - false: 错误  true: 正确
 	 */
 
 	var checkPhone$1 = function (data) {
@@ -227,8 +231,8 @@
 
 	/**
 	 * 判断数据是否是 String 类型
-	 * @param {Any} val 要判断的数据
-	 * @return {Boolean} true：是；false：不是；
+	 * @param {Any} val - 要判断的数据
+	 * @return {Boolean} - true：是；false：不是；
 	 */
 
 	var isString$2 = function (val) {
@@ -238,9 +242,9 @@
 	var isString$1 = isString$2;
 	/**
 	 * 合并 baseURL 和相对 URL 成一个完整的 URL
-	 * @param {String} baseURL baseURL
-	 * @param {String} relativeURL 相对 URL
-	 * @return {String} 返回组合后的完整 URL
+	 * @param {String} baseURL - baseURL
+	 * @param {String} relativeURL - 相对 URL
+	 * @return {String} - 返回组合后的完整 URL
 	 */
 	var combineURLs$1 = function (baseURL, relativeURL) {
 	  return relativeURL && isString$1(relativeURL) && isString$1(baseURL) ? baseURL.replace(/\/+$/, "") + "/" + relativeURL.replace(/^\/+/, "") : baseURL;
@@ -248,8 +252,8 @@
 
 	/**
 	 * 精确判断数据是否是 Object 类型
-	 * @param {Any} val 要判断的数据
-	 * @return {Boolean} true：是；false：不是；
+	 * @param {Any} val - 要判断的数据
+	 * @return {Boolean} - true：是；false：不是；
 	 */
 
 	var isObject$3 = function (val) {
@@ -275,13 +279,13 @@
 	var root = root_1;
 
 	/**
-	 * @param {Function} func 需要防抖处理的方法
-	 * @param {number} [wait=0] 延迟的毫秒数
-	 * @param {Object} [options={}] 选项对象
-	 * @param {boolean} [options.leading=false] 指定在延迟开始前调用
-	 * @param {number} [options.maxWait] 调用“func”之前允许延迟的最长时间 ms
-	 * @param {boolean} [options.trailing=true] 指定在延迟结束后调用
-	 * @returns {Function} 返回新的防抖方法
+	 * @param {Function} func - 需要防抖处理的方法
+	 * @param {number} [wait=0] - 延迟的毫秒数
+	 * @param {Object} [options={}] - 选项对象
+	 * @param {boolean} [options.leading=false] - 指定在延迟开始前调用
+	 * @param {number} [options.maxWait] - 调用“func”之前允许延迟的最长时间 ms
+	 * @param {boolean} [options.trailing=true] - 指定在延迟结束后调用
+	 * @returns {Function} - 返回新的防抖方法
 	 */
 	var debounce$2 = function (func, wait, options) {
 	  var lastArgs, lastThis, maxWait, result, timerId, lastCallTime;
@@ -415,9 +419,9 @@
 
 	/**
 	 * 深层合并对象，只支持合并两个对象，该方法不会改变原有的对象
-	 * @param {Object} FirstOBJ 第一个对象
-	 * @param {Object} SecondOBJ 第二个对象
-	 * @return {Object} 返回深层合并后的对象
+	 * @param {Object} FirstOBJ - 第一个对象
+	 * @param {Object} SecondOBJ - 第二个对象
+	 * @returns {Object} - 返回深层合并后的对象
 	 */
 
 	var deepMargeObject$1 = function (FirstOBJ, SecondOBJ) {
@@ -436,8 +440,8 @@
 
 	/**
 	 * base64加密字符串
-	 * @param {string} input 未加密前的字符串
-	 * @returns 加密后的字符串
+	 * @param {String} input - 未加密前的字符串
+	 * @returns {String} - 加密后的字符串
 	 */
 
 	var encodeBase64$1 = function (input) {
@@ -474,8 +478,8 @@
 
 	/**
 	 * base64解密字符串
-	 * @param {string} input 未解密前的字符串
-	 * @returns 解密后的字符串
+	 * @param {String} input - 未解密前的字符串
+	 * @returns {String} - 解密后的字符串
 	 */
 
 	var decodeBase64$1 = function (input) {
@@ -522,11 +526,40 @@
 	};
 
 	/**
-	 * 格式化日期时间 传入日期对象或者字符串
-	 * @param {Date|String} date 日期或日期字符串
-	 * @return {Object} 各种时间日期格式,支持自定义拼接key
+	 * @typedef ReturnType
+	 * @property {Number} YYYY - 年
+	 * @property {String} MM - 月
+	 * @property {Number} M - 月
+	 * @property {Number} DD - 日
+	 * @property {Number} D - 日
+	 * @property {Number} hh - 时
+	 * @property {Number} h - 时
+	 * @property {Number} mm - 分
+	 * @property {Number} m - 分
+	 * @property {Number} ss - 秒
+	 * @property {Number} s - 秒
+	 * @property {Number} ms - 毫秒
+	 * @property {Number} ms2 - 毫秒
+	 * @property {Number} ms3 - 毫秒
+	 * @property {String} ms4 - 毫秒
+	 * @property {Date | String} dt - 日期或日期字符串
+	 * @property {String} f1 - 年-月-日
+	 * @property {String} f2 - 年月日
+	 * @property {String} f3 - 年月日时分
+	 * @property {String} f4 - 时分秒
+	 * @property {String} f5 - 月-日
+	 * @property {String} f6 - 年-月
+	 * @property {String} f7 - 年月
+	 * @property {String} f8 - 时分
+	 * @property {String} f9 - 月日
+	 * @property {String} notes - YYYY（年），MM（月，补0），M（月，不补0），DD（日，补0），D（日，不补0），hh（时，补0），h（时，不补0），mm（分，补0），m（分，不补0），ss（秒，补0），s（秒，不补0），ms（毫秒，不补0），ms2（毫秒，补0到2位），ms3（毫秒，补0到3位），ms4（毫秒，补0到4位），其余的f1，f2，... 看格式就知道了！
 	 */
 
+	/**
+	 * 格式化日期时间 传入日期对象或者字符串
+	 * @param {Date | String} date - 日期或日期字符串
+	 * @return {ReturnType} - 各种时间日期格式,支持自定义拼接key
+	 */
 	var formatDate$1 = function (date) {
 	  var YYYY = null;
 	  var M = null;
@@ -652,8 +685,9 @@
 	};
 
 	/**
-	 * @param {date} time 需要转换的时间
-	 * @param {String} fmt 需要转换的格式 如 yyyy-MM-dd、yyyy-MM-dd HH:mm:ss
+	 * @param {Date} time - 需要转换的时间
+	 * @param {String} fmt - 需要转换的格式 如 yyyy-MM-dd、yyyy-MM-dd HH:mm:ss
+	 * @returns {String} - 格式化后的日期时间
 	 */
 
 	var formatTime$1 = function (time, fmt) {
@@ -681,9 +715,9 @@
 
 	/**
 	 * 计算两个时间的间隔
-	 * @param {Number} e 开始时间戳
-	 * @param {Number} t 结束时间戳
-	 * @return {String} 1,12,15,13 天时分秒  过期返回空
+	 * @param {Number} e - 开始时间戳
+	 * @param {Number} t - 结束时间戳
+	 * @return {String} - 1,12,15,13 天时分秒  过期返回空
 	 */
 
 	var getTimeInterval$1 = function (e, t) {
@@ -706,8 +740,8 @@
 
 	/**
 	 * 获取url路径的query参数
-	 * @param {string} url url
-	 * @returns Object query参数的对象
+	 * @param {String} url - url
+	 * @returns {Object} - query参数的对象
 	 */
 
 	var getUrlQuery$1 = function (url) {
@@ -723,8 +757,8 @@
 
 	/**
 	 * 判断 URL 是否是绝对 URL。
-	 * @param {String} url 要判断的 URL
-	 * @return {Boolean} true：是绝对URL；false：不是绝对URL；
+	 * @param {String} url - 要判断的 URL
+	 * @return {Boolean} - true：是绝对URL；false：不是绝对URL；
 	 */
 
 	var isAbsoluteURL$1 = function (url) {
@@ -735,8 +769,8 @@
 
 	/**
 	 * 判断数据是否是 Array 类型
-	 * @param {Any} val 要判断的数据
-	 * @return {Boolean} true：是；false：不是；
+	 * @param {Any} val - 要判断的数据
+	 * @return {Boolean} - true：是；false：不是；
 	 */
 
 	var isArray$2 = function (val) {
@@ -745,8 +779,8 @@
 
 	/**
 	 * 精确判断数据是否是 Boolean 类型
-	 * @param {Any} val 要判断的数据
-	 * @return {Boolean} true：是；false：不是；
+	 * @param {Any} val - 要判断的数据
+	 * @return {Boolean} - true：是；false：不是；
 	 */
 
 	var isBoolean$1 = function (val) {
@@ -755,8 +789,8 @@
 
 	/**
 	 * 精确判断数据是否是 Date 类型
-	 * @param {Any} val 要判断的数据
-	 * @return {Boolean} true：是；false：不是；
+	 * @param {Any} val - 要判断的数据
+	 * @return {Boolean} - true：是；false：不是；
 	 */
 
 	var isDate$1 = function (val) {
@@ -765,8 +799,8 @@
 
 	/**
 	 * 精确判断数据是否是 Function 类型
-	 * @param {Any} val 要判断的数据
-	 * @return {Boolean} true：是；false：不是；
+	 * @param {Any} val - 要判断的数据
+	 * @return {Boolean} - true：是；false：不是；
 	 */
 
 	var isFunction$1 = function (val) {
@@ -775,8 +809,8 @@
 
 	/**
 	 * 精确判断数据是否是 Number 类型
-	 * @param {Any} val 要判断的数据
-	 * @return {Boolean} true：是；false：不是；
+	 * @param {Any} val - 要判断的数据
+	 * @return {Boolean} - true：是；false：不是；
 	 */
 
 	var isNumber$1 = function (val) {
@@ -785,7 +819,8 @@
 
 	/**
 	 * 数字转中文
-	 * @param {Number} num 数字
+	 * @param {Number} num - 数字
+	 * @returns {Number} - 转中文的值
 	 */
 
 	var numberToChinese$1 = function (num) {
@@ -822,7 +857,7 @@
 	};
 
 	/**
-	 * @returns 随机生成十六进制颜色值
+	 * @returns {String} - 随机生成十六进制颜色值
 	 */
 
 	var randomHexColor$1 = function () {
@@ -835,9 +870,9 @@
 
 	/**
 	 * 获取俩数之间的随机整数(包头包尾)
-	 * @param {Number} minNum 最小整数
-	 * @param {Number} maxNum 最大整数
-	 * @returns 随机数
+	 * @param {Number} minNum - 最小整数
+	 * @param {Number} maxNum - 最大整数
+	 * @returns {Number} - 随机数
 	 */
 
 	var randomNum$1 = function (minNum, maxNum) {
@@ -845,7 +880,7 @@
 	};
 
 	/**
-	 * @returns 随机生成RGBA颜色
+	 * @returns {String} - 随机生成RGBA颜色
 	 */
 
 	var randomRgbaColor$1 = function () {
@@ -858,7 +893,7 @@
 	};
 
 	/**
-	 * @returns 随机生成RGB颜色
+	 * @returns {String} - 随机生成RGB颜色
 	 */
 
 	var randomRgbColor$1 = function () {
@@ -870,9 +905,9 @@
 
 	/**
 	 * 生成指定长度的随机字符串
-	 * @param {Number} min 最小长度
-	 * @param {Number} max 最大长度
-	 * @return {String} 返回生成的字符串
+	 * @param {Number} min - 最小长度
+	 * @param {Number} max - 最大长度
+	 * @returns {String} - 返回生成的字符串
 	 */
 
 	var randomString$1 = function (min, max) {
@@ -950,7 +985,7 @@
 
 	/**
 	 * 本月第一天
-	 * @returns 本月第一天的 年-月-日
+	 * @returns - 本月第一天的 年-月-日
 	 */
 
 	var showMonthFirstDay$1 = function () {
@@ -969,7 +1004,7 @@
 
 	/**
 	 * 本月最后一天
-	 * @returns 本月最后一天的 年-月-日
+	 * @returns - 本月最后一天的 年-月-日
 	 */
 
 	var showMonthLastDay$1 = function () {
@@ -989,7 +1024,7 @@
 
 	/**
 	 * 本周第一天
-	 * @returns 本周第一天的日期时间
+	 * @returns - 本周第一天的日期时间
 	 */
 
 	var showWeekFirstDay$1 = function () {
@@ -1015,7 +1050,7 @@
 
 	/**
 	 * 本周最后一天
-	 * @returns 本周最后一天的日期时间
+	 * @returns - 本周最后一天的日期时间
 	 */
 
 	var showWeekLastDay$1 = function () {
@@ -1043,8 +1078,8 @@
 	/**
 	 * 按ascii码从小到大排序对象（根据Key）
 	 * 一般第三方接口签名生成需要用到
-	 * @param {Object} obj 传入需要排序的对象
-	 * @returns {String} 输出排序好的字符串
+	 * @param {Object} obj - 传入需要排序的对象
+	 * @returns {String} - 输出排序好的字符串
 	 */
 
 	var sortAscii$1 = function (obj) {
@@ -1068,11 +1103,11 @@
 	var isObject$1 = isObject$3;
 
 	/**
-	 * @param {Function} func 需要节流处理的方法
-	 * @param {number} [wait=0] 延迟的毫秒数
-	 * @param {Object} [options={}] 选项对象
-	 * @param {boolean} [options.leading=true] 指定调用在节流开始前
-	 * @param {boolean} [options.trailing=true] 指定调用在节流结束后
+	 * @param {Function} func - 需要节流处理的方法
+	 * @param {number} [wait=0] - 延迟的毫秒数
+	 * @param {Object} [options={}] - 选项对象
+	 * @param {boolean} [options.leading=true] - 指定调用在节流开始前
+	 * @param {boolean} [options.trailing=true] - 指定调用在节流结束后
 	 * @returns {Function} 返回新的节流方法
 	 */
 	var throttle$1 = function (func, wait, options) {
@@ -1095,10 +1130,10 @@
 
 	/**
 	 * 扁平数据转树形数据
-	 * @param {*} data 数据源
-	 * @param {*} id id字段 默认 'id'
-	 * @param {*} parentId 父节点字段 默认 'pid'
-	 * @param {*} children 孩子节点字段 默认 'children'
+	 * @param {Object} data - 数据源
+	 * @param {String} id - id字段 默认 'id'
+	 * @param {String} parentId - 父节点字段 默认 'pid'
+	 * @param {String} children - 孩子节点字段 默认 'children'
 	 */
 
 	var treeDataTranslate$1 = function (data, id, parentId, children) {
@@ -1147,8 +1182,8 @@
 
 	/**
 	 * 树形数据转扁平数据
-	 * @param {*} data 数据源
-	 * @param {*} children 孩子节点字段 默认 'children'
+	 * @param {Object} data - 数据源
+	 * @param {String} children - 孩子节点字段 默认 'children'
 	 */
 
 	var treeDataTranslateFlat$1 = function (data, children) {
@@ -1177,9 +1212,10 @@
 
 	/**
 	 * 创建UUID
-	 * @param {Number} len uuid的长度
-	 * @param {Boolean} firstU 将返回的首字母置为"u"
-	 * @param {Nubmer} radix 生成uuid的基数(意味着返回的字符串都是这个基数),2-二进制,8-八进制,10-十进制,16-十六进制
+	 * @param {Number} len - uuid的长度
+	 * @param {Boolean} firstU - 将返回的首字母置为"u"
+	 * @param {Nubmer} radix - 生成uuid的基数(意味着返回的字符串都是这个基数),2-二进制,8-八进制,10-十进制,16-十六进制
+	 * @returns {string} -  uuid
 	 */
 
 	var createUUID$1 = function (len, firstU, radix) {
@@ -1440,6 +1476,11 @@
 	  return (num << cnt) | (num >>> (32 - cnt));
 	}
 
+	/**
+	 * 
+	 * @param {String} str - 需要md5的值
+	 * @returns {String} - md5后的值
+	 */
 	var md5$1 = function (str) {
 	  return hex_md5(str);
 	};
@@ -1448,8 +1489,9 @@
 
 	/**
 	 * 数组降维，将多维数组转换为一维数组
-	 * @param {Array} array 需要变平的数组
-	 * @returns {Array} 返回扁平的数组
+	 * @template T
+	 * @param {Array<T>} array - 需要变平的数组
+	 * @returns {Array<T>} - 返回扁平的数组
 	 */
 	var flatten$1 = function (array) {
 	  var result = [];
