@@ -17,11 +17,13 @@ asyncTasksT();
 async function asyncTasksT() {
   // 假设 pFn 方法是某个请求
   /**@type {Promise<String>} */
-  const pFn = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("成功");
-    }, 1000);
-  });
+  const pFn = function() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("成功");
+      }, 1000);
+    });
+  }
   const [err, res] = await rocUtils.asyncTasks(pFn);
   console.log(res); // 成功
 }
