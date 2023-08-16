@@ -1,6 +1,6 @@
 /*
   * 常用javascript utils 方法
-  * roc-utils v0.2.3
+  * roc-utils v0.2.4
   * (c) 2020-2023 rocyuan
   * Email rocyuan666@163.com
   * Released under the MIT License.
@@ -34,22 +34,41 @@
 	};
 
 	/**
+	 * 精确判断数据是否是 Function 类型
+	 * @param {Any} val - 要判断的数据
+	 * @return {Boolean} - true：是；false：不是；
+	 */
+
+	var isFunction$2 = function (val) {
+	  return Object.prototype.toString.call(val) === "[object Function]";
+	};
+
+	var isFunction$1 = isFunction$2;
+
+	/**
 	 * 同步 try catch 的进一步封装处理
 	 * @template T
-	 * @param {Promise<T>} promise - 需要处理的promise方法
+	 * @param {Function<Promise<T>> | Promise<T>} promise - 需要处理的promise方法
 	 * @returns {Promise<T>} - 处理过的promise方法
 	 * @example
 	 * let [err, res] = await rocUtils.asyncTasks(Promise函数);
 	 * if(res) 成功
 	 * if(err) 失败
 	 */
-
 	var asyncTasks$1 = function (promise) {
-	  return promise
-	    .then(function (data) {
-	      return [null, data];
-	    })
-	    .catch(function (err) { return [err]; });
+	  if (isFunction$1(promise)) {
+	    return promise()
+	      .then(function (data) {
+	        return [null, data];
+	      })
+	      .catch(function (err) { return [err]; });
+	  } else {
+	    return promise
+	      .then(function (data) {
+	        return [null, data];
+	      })
+	      .catch(function (err) { return [err]; });
+	  }
 	};
 
 	/**
@@ -798,16 +817,6 @@
 	};
 
 	/**
-	 * 精确判断数据是否是 Function 类型
-	 * @param {Any} val - 要判断的数据
-	 * @return {Boolean} - true：是；false：不是；
-	 */
-
-	var isFunction$1 = function (val) {
-	  return Object.prototype.toString.call(val) === "[object Function]";
-	};
-
-	/**
 	 * 精确判断数据是否是 Number 类型
 	 * @param {Any} val - 要判断的数据
 	 * @return {Boolean} - true：是；false：不是；
@@ -1534,7 +1543,7 @@
 	var isArray = isArray$2;
 	var isBoolean = isBoolean$1;
 	var isDate = isDate$1;
-	var isFunction = isFunction$1;
+	var isFunction = isFunction$2;
 	var isNumber = isNumber$1;
 	var isObject = isObject$3;
 	var isString = isString$2;
