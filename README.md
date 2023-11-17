@@ -227,17 +227,17 @@ function decodeBase64T() {
   console.log(res); // rocyuan
 }
 
-// 格式化日期时间1
+// 格式化日期时间
 formatDateT();
 function formatDateT() {
   const res = rocUtils.formatDate(new Date());
   console.log(res); // 对象内容过多, 运行打印查看
 }
 
-// 格式化日期时间2
-formatTimeT();
-function formatTimeT() {
-  const res = rocUtils.formatTime(new Date(), "yyyy-MM-dd HH:mm:ss");
+// 格式化日期时间
+dateFormatT();
+function dateFormatT() {
+  const res = rocUtils.dateFormat(new Date(), "YYYY-MM-DD HH:mm:ss");
   console.log(res); // 2021-06-10 23:39:06
 }
 

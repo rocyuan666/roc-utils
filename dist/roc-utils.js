@@ -1,6 +1,6 @@
 /*
   * 常用javascript utils 方法
-  * roc-utils v0.2.5
+  * roc-utils v0.2.6
   * (c) 2020-2023 rocyuan
   * Email rocyuan666@163.com
   * Released under the MIT License.
@@ -186,11 +186,12 @@
 
 	/**
 	 * 校验纬度
-	 * @param {String} latitude - 纬度
+	 * @param {String | Number} latitude - 纬度
 	 * @return {Boolean} - false: 错误  true: 正确
 	 */
 
 	var checkLat$1 = function (latitude) {
+	  latitude = String(latitude);
 	  //纬度,整数部分为0-90小数部分为0到6位
 	  var latreg = /^(\-|\+)?([0-8]?\d{1}\.\d{0,6}|90\.0{0,6}|[0-8]?\d{1}|90)$/;
 	  if (!latreg.test(latitude)) {
@@ -201,11 +202,12 @@
 
 	/**
 	 * 校验经度
-	 * @param {String} longitude - 经度
+	 * @param {String | Number} longitude - 经度
 	 * @return {Boolean} - false: 错误  true: 正确
 	 */
 
 	var checkLong$1 = function (longitude) {
+	  longitude = String(longitude);
 	  //经度，整数部分为0-180小数部分为0到6位
 	  var longreg = /^(\-|\+)?(((\d|[1-9]\d|1[0-7]\d|0{1,3})\.\d{0,6})|(\d|[1-9]\d|1[0-7]\d|0{1,3})|180\.0{0,6}|180)$/;
 	  if (!longreg.test(longitude)) {
@@ -685,25 +687,25 @@
 	};
 
 	/**
-	 * @param {Date} time - 需要转换的时间
-	 * @param {String} fmt - 需要转换的格式 如 yyyy-MM-dd、yyyy-MM-dd HH:mm:ss
+	 * @param {Date | String | Number} time - 需要转换的时间
+	 * @param {String} fmt - 需要转换的格式 如 YYYY-MM-DD YYYY-MM-DD HH:mm:ss
 	 * @returns {String} - 格式化后的日期时间
 	 */
 
-	var formatTime$1 = function (time, fmt) {
+	var dateFormat$1 = function (time, fmt) {
 	  if (!time) { return ""; }
 	  else {
 	    var date = new Date(time);
 	    var o = {
 	      "M+": date.getMonth() + 1,
-	      "d+": date.getDate(),
+	      "D+": date.getDate(),
 	      "H+": date.getHours(),
 	      "m+": date.getMinutes(),
 	      "s+": date.getSeconds(),
 	      "q+": Math.floor((date.getMonth() + 3) / 3),
 	      S: date.getMilliseconds(),
 	    };
-	    if (/(y+)/.test(fmt)) { fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length)); }
+	    if (/(Y+)/.test(fmt)) { fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length)); }
 	    for (var k in o) {
 	      if (new RegExp("(" + k + ")").test(fmt)) {
 	        fmt = fmt.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
@@ -1131,9 +1133,9 @@
 	/**
 	 * 扁平数据转树形数据
 	 * @param {Object} data - 数据源
-	 * @param {String} id - id字段 默认 'id'
-	 * @param {String} parentId - 父节点字段 默认 'pid'
-	 * @param {String} children - 孩子节点字段 默认 'children'
+	 * @param {String} [id] - id字段 默认 'id'
+	 * @param {String} [parentId] - 父节点字段 默认 'pid'
+	 * @param {String} [children] - 孩子节点字段 默认 'children'
 	 */
 
 	var treeDataTranslate$1 = function (data, id, parentId, children) {
@@ -1183,7 +1185,7 @@
 	/**
 	 * 树形数据转扁平数据
 	 * @param {Object} data - 数据源
-	 * @param {String} children - 孩子节点字段 默认 'children'
+	 * @param {String} [children] - 孩子节点字段 默认 'children'
 	 */
 
 	var treeDataTranslateFlat$1 = function (data, children) {
@@ -1527,7 +1529,7 @@
 	var encodeBase64 = encodeBase64$1;
 	var decodeBase64 = decodeBase64$1;
 	var formatDate = formatDate$1;
-	var formatTime = formatTime$1;
+	var dateFormat = dateFormat$1;
 	var getTimeInterval = getTimeInterval$1;
 	var getUrlQuery = getUrlQuery$1;
 	var isAbsoluteURL = isAbsoluteURL$1;
@@ -1573,7 +1575,7 @@
 	  encodeBase64: encodeBase64,
 	  decodeBase64: decodeBase64,
 	  formatDate: formatDate,
-	  formatTime: formatTime,
+	  dateFormat: dateFormat,
 	  getTimeInterval: getTimeInterval,
 	  getUrlQuery: getUrlQuery,
 	  isAbsoluteURL: isAbsoluteURL,

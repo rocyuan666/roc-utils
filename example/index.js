@@ -155,9 +155,9 @@ function formatDateT() {
 }
 
 // 格式化日期时间2
-formatTimeT();
-function formatTimeT() {
-  const res = rocUtils.formatTime(new Date(), "yyyy-MM-dd HH:mm:ss");
+dateFormatT();
+function dateFormatT() {
+  const res = rocUtils.dateFormat(new Date(), "YYYY-MM-DD HH:mm:ss");
   console.log(res); // 2021-06-10 23:39:06
 }
 
