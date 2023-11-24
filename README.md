@@ -452,9 +452,9 @@ base64 解密字符串 `decodeBase64`
 
 节流方法 `throttle`
 
-格式化日期时间 1 `formatDate`
+格式化日期时间 1 返回结果为对象 需组织格式 `formatDate`
 
-格式化日期时间 2 `formatTime`
+格式化日期时间 2 返回结果为指定格式（例如 YYYY-MM-DD HH:mm:ss）的字符串 `dateFormat`
 
 计算两个时间的间隔 `getTimeInterval`
 
