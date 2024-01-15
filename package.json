@@ -8,6 +8,7 @@
   "browser": "dist/roc-utils.umd.js",
   "unpkg": "dist/roc-utils.umd.js",
   "jsdelivr": "dist/roc-utils.umd.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "dev": "nodemon ./example/index.js",
     "build": "rimraf dist && node build/index.js",
