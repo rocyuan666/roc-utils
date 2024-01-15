@@ -4,10 +4,9 @@
  * @Description  : rollup config
  */
 
-const { name, version, author, license } = require("../package.json");
+const { name, version, author, license } = require('../package.json')
 
-const banner = 
-`/*
+const banner = `/*
   * 常用javascript utils 方法
   * ${name} v${version}
   * (c) 2020-${new Date().getFullYear()} ${author}
@@ -16,5 +15,5 @@ const banner =
   */`
 
 module.exports = {
-  banner
+  banner,
 }
