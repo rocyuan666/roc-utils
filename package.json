@@ -1,6 +1,6 @@
 {
   "name": "roc-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "roc common javascript utils",
   "main": "dist/roc-utils.umd.js",
   "module": "dist/roc-utils.es.js",

@@ -1,6 +1,6 @@
 /*
   * 常用javascript utils 方法
-  * roc-utils v0.2.7
+  * roc-utils v1.0.1
   * (c) 2020-2024 rocyuan
   * Email rocyuan666@163.com
   * Released under the MIT License.
@@ -806,7 +806,7 @@ var isNumber$1 = function (val) {
 };/**
  * 数字转中文
  * @param {Number} num - 数字
- * @returns {Number} - 转中文的值
+ * @returns {String} - 转中文的值
  */
 
 var numberToChinese$1 = function (num) {
