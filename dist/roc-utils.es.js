@@ -1,6 +1,6 @@
 /*
   * 常用javascript utils 方法
-  * roc-utils v2.0.0
+  * roc-utils v2.0.1
   * (c) 2020-2024 rocyuan
   * Email rocyuan666@163.com
   * Released under the MIT License.
@@ -24,9 +24,8 @@ function arrTrans (num, arr) {
   return iconsArr
 }/**
  * 同步 try catch 的进一步封装处理
- * @template T
- * @param {Promise<T>} promise - 需要处理的promise方法
- * @returns {Promise<T>} - 处理过的promise方法
+ * @param {Promise<Object>} promise - 需要处理的promise方法
+ * @returns {Promise<Object[]>} - 处理过的promise方法
  * @example
  * let [err, res] = await rocUtils.asyncTasks(Promise函数);
  * if(res) 成功
@@ -37,7 +36,7 @@ function asyncTasks (promise) {
     .then(function (data) {
       return [null, data]
     })
-    .catch(function (err) { return [err]; })
+    .catch(function (err) { return [err, null]; })
 }/**
  * 校验车牌号
  * @param {String} data - 车牌号
