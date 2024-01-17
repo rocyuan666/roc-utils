@@ -1,6 +1,6 @@
 declare module 'roc-utils' {
-  export function arrTrans(num: number, arr: Array<object>): Array<object>
-  export function asyncTasks(func: Promise<object>): [err: any, result: any]
+  export function arrTrans(num: number, arr: Array<Object>): Array<Object>
+  export function asyncTasks(func: Promise<Object>): Promise<Object[]>
   export function checkCarNumber(data: string): boolean
   export function checkCodeNumber(data: string): boolean
   export function checkCompanyIdCard(data: string): boolean
@@ -15,7 +15,7 @@ declare module 'roc-utils' {
     wait?: number,
     options?: { leading?: boolean; maxWait?: number; trailing?: boolean },
   ): Function
-  export function deepMargeObject(FirstOBJ: object, SecondOBJ: object): object
+  export function deepMargeObject(FirstOBJ: Object, SecondOBJ: Object): Object
   export function encodeBase64(input: string): string
   export function decodeBase64(input: string): string
   export interface FormatDateReturnType {
@@ -49,7 +49,7 @@ declare module 'roc-utils' {
   export function formatDate(date: Date | string): FormatDateReturnType
   export function dateFormat(time: Date | string | number, fmt: string): string
   export function getTimeInterval(e: number, t: number): string
-  export function getUrlQuery(url: string): object
+  export function getUrlQuery(url: string): Object
   export function isAbsoluteURL(url: string): boolean
   export function isArray(val: any): boolean
   export function isBoolean(val: any): boolean
@@ -68,20 +68,20 @@ declare module 'roc-utils' {
   export function showMonthLastDay(): string
   export function showWeekFirstDay(): string
   export function showWeekLastDay(): string
-  export function sortAscii(obj: object): string
+  export function sortAscii(obj: Object): string
   export function throttle(
     func: Function,
     wait?: number,
     options?: { leading?: boolean; trailing?: boolean },
   ): Function
   export function treeDataTranslate(
-    data: object,
+    data: Object,
     id?: string,
     parentId?: string,
     children?: string,
-  ): Array<object>
-  export function treeDataTranslateFlat(data: object, children?: string): Array<object>
+  ): Array<Object>
+  export function treeDataTranslateFlat(data: Object, children?: string): Array<Object>
   export function createUUID(len?: number, firstU?: boolean, radix?: number): string
   export function md5(str: string): string
-  export function flatten(array: Array<object>): Array<object>
+  export function flatten(array: Array<Object>): Array<Object>
 }
