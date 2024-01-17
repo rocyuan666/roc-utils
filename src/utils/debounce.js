@@ -1,5 +1,5 @@
-const isObject = require('./isObject')
-const root = require('../_internal/root')
+import isObject from './isObject.js'
+import { root } from '../_internal/root.js'
 
 /**
  * @param {Function} func - 需要防抖处理的方法
@@ -10,7 +10,7 @@ const root = require('../_internal/root')
  * @param {boolean} [options.trailing=true] - 指定在延迟结束后调用
  * @returns {Function} - 返回新的防抖方法
  */
-module.exports = (func, wait, options) => {
+export default (func, wait, options) => {
   let lastArgs, lastThis, maxWait, result, timerId, lastCallTime
 
   let lastInvokeTime = 0
@@ -23,11 +23,16 @@ module.exports = (func, wait, options) => {
   if (typeof func !== 'function') {
     throw new TypeError('Expected a function')
   }
+  // @ts-ignore
   wait = +wait || 0
   if (isObject(options)) {
+    // @ts-ignore
     leading = !!options.leading
+    // @ts-ignore
     maxing = 'maxWait' in options
+    // @ts-ignore
     maxWait = maxing ? Math.max(+options.maxWait || 0, wait) : maxWait
+    // @ts-ignore
     trailing = 'trailing' in options ? !!options.trailing : trailing
   }
 
@@ -65,6 +70,7 @@ module.exports = (func, wait, options) => {
   function remainingWait(time) {
     const timeSinceLastCall = time - lastCallTime
     const timeSinceLastInvoke = time - lastInvokeTime
+    // @ts-ignore
     const timeWaiting = wait - timeSinceLastCall
 
     return maxing ? Math.min(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting
@@ -75,6 +81,7 @@ module.exports = (func, wait, options) => {
     const timeSinceLastInvoke = time - lastInvokeTime
     return (
       lastCallTime === undefined ||
+      // @ts-ignore
       timeSinceLastCall >= wait ||
       timeSinceLastCall < 0 ||
       (maxing && timeSinceLastInvoke >= maxWait)

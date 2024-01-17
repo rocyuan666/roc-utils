@@ -367,6 +367,6 @@ function bit_rol(num, cnt) {
  * @param {String} str - 需要md5的值
  * @returns {String} - md5后的值
  */
-module.exports = (str) => {
+export default (str) => {
   return hex_md5(str)
 }

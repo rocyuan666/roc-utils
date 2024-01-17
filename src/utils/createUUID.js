@@ -5,7 +5,7 @@
  * @param {Nubmer} radix - 生成uuid的基数(意味着返回的字符串都是这个基数),2-二进制,8-八进制,10-十进制,16-十六进制
  * @returns {string} -  uuid
  */
-module.exports = (len = 32, firstU = true, radix = null) => {
+export default (len = 32, firstU = true, radix = null) => {
   let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('')
   let uuid = []
   radix = radix || chars.length

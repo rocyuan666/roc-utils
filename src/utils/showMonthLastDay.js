@@ -2,7 +2,7 @@
  * 本月最后一天
  * @returns - 本月最后一天的 年-月-日
  */
-module.exports = () => {
+export default () => {
   let Nowdate = new Date()
   let MonthNextFirstDay = new Date(Nowdate.getYear(), Nowdate.getMonth() + 1, 1)
   let MonthLastDay = new Date(MonthNextFirstDay - 86400000)

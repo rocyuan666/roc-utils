@@ -3,7 +3,7 @@
  * @param {String} input - 未解密前的字符串
  * @returns {String} - 解密后的字符串
  */
-module.exports = (input) => {
+export default (input) => {
   var keyStr =
     'ABCDEFGHIJKLMNOP' + 'QRSTUVWXYZabcdef' + 'ghijklmnopqrstuv' + 'wxyz0123456789+/' + '='
   var output = ''

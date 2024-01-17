@@ -3,7 +3,7 @@
  * @param {String} data - 身份证号
  * @return {Boolean} - false: 不合法 true: 合法
  */
-module.exports = (data) => {
+export default (data) => {
   var num = data.toUpperCase()
   //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。
   if (!/(^\d{15}$)|(^\d{17}([0-9]|X)$)/.test(num)) {

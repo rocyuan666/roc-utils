@@ -12,4 +12,4 @@ const freeSelf = typeof self === 'object' && self !== null && self.Object === Ob
 /** root 用作对全局对象的引用 */
 const root = freeGlobalThis || freeGlobal || freeSelf || Function('return this')()
 
-module.exports = root
+export { root }

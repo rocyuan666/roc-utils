@@ -2,7 +2,7 @@
  * 本月第一天
  * @returns - 本月第一天的 年-月-日
  */
-module.exports = () => {
+export default () => {
   let Nowdate = new Date()
   let MonthFirstDay = new Date(Nowdate.getYear(), Nowdate.getMonth(), 1)
   let M = Number(MonthFirstDay.getMonth()) + 1

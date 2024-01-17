@@ -4,7 +4,7 @@
  * @param {Number} max - 最大长度
  * @returns {String} - 返回生成的字符串
  */
-module.exports = (min, max) => {
+export default (min, max) => {
   let returnStr = '',
     range = max ? Math.round(Math.random() * (max - min)) + min : min,
     arr = [

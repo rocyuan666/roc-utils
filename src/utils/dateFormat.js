@@ -3,7 +3,7 @@
  * @param {String} fmt - 需要转换的格式 如 YYYY-MM-DD YYYY-MM-DD HH:mm:ss
  * @returns {String} - 格式化后的日期时间
  */
-module.exports = (time, fmt) => {
+export default (time, fmt) => {
   if (!time) return ''
   else {
     const date = new Date(time)

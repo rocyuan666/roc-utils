@@ -3,7 +3,7 @@
  * @param {Object} data - 数据源
  * @param {String} [children] - 孩子节点字段 默认 'children'
  */
-module.exports = (data, children) => {
+export default (data, children) => {
   let config = {
     children: children || 'children',
   }

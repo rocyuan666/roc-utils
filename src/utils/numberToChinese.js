@@ -3,7 +3,7 @@
  * @param {Number} num - 数字
  * @returns {String} - 转中文的值
  */
-module.exports = (num) => {
+export default (num) => {
   if (!/^\d*(\.\d*)?$/.test(num)) return 'Number is wrong!'
   let AA = new Array('零', '一', '二', '三', '四', '五', '六', '七', '八', '九')
   let BB = new Array('', '十', '百', '千', '万', '亿', '点', '')

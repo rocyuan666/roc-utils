@@ -4,7 +4,7 @@
  * @param {Number} t - 结束时间戳
  * @return {String} - 1,12,15,13 天时分秒  过期返回空
  */
-module.exports = (e, t) => {
+export default (e, t) => {
   var r = [0, 0, 0, 0],
     n = '',
     o = t > e ? parseInt((t - e) / 1e3) : 0

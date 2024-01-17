@@ -4,8 +4,11 @@
  * @Description  : rollup config
  */
 
-const { terser } = require('rollup-plugin-terser')
-const { banner } = require('./banner')
+import { terser } from 'rollup-plugin-terser'
+import { banner } from './banner.js'
+import { createRequire } from 'node:module'
+
+const require = createRequire(import.meta.url)
 const pkg = require('../package.json')
 
 /**
@@ -41,8 +44,4 @@ const esOutputOptions = {
   banner,
 }
 
-module.exports = {
-  umdOutputOptions,
-  umdMinOutputOptions,
-  esOutputOptions,
-}
+export { umdOutputOptions, umdMinOutputOptions, esOutputOptions }

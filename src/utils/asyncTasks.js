@@ -8,7 +8,7 @@
  * if(res) 成功
  * if(err) 失败
  */
-module.exports = (promise) => {
+export default (promise) => {
   return promise
     .then((data) => {
       return [null, data]

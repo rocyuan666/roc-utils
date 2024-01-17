@@ -4,6 +4,6 @@
  * @param {Number} maxNum - 最大整数
  * @returns {Number} - 随机数
  */
-module.exports = (minNum, maxNum) => {
+export default (minNum, maxNum) => {
   return parseInt(Math.random() * (maxNum - minNum + 1) + minNum)
 }

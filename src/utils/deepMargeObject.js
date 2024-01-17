@@ -4,7 +4,7 @@
  * @param {Object} SecondOBJ - 第二个对象
  * @returns {Object} - 返回深层合并后的对象
  */
-module.exports = (FirstOBJ, SecondOBJ) => {
+export default (FirstOBJ, SecondOBJ) => {
   function deepMargeObject(FirstOBJ, SecondOBJ) {
     let ResultOBJ = {}
     for (let key in FirstOBJ) {

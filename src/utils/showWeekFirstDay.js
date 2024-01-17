@@ -2,7 +2,7 @@
  * 本周第一天
  * @returns - 本周第一天的日期时间
  */
-module.exports = () => {
+export default () => {
   let Nowdate = new Date()
   let numDay = Nowdate.getDay()
   // 处理本周第一天是周一（不处理的话第一天是周日）

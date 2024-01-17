@@ -1,23 +1,18 @@
 /*
   * 常用javascript utils 方法
-  * roc-utils v1.0.1
+  * roc-utils v2.0.0
   * (c) 2020-2024 rocyuan
   * Email rocyuan666@163.com
   * Released under the MIT License.
   */
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}/**
+/**
  * 一维数组转换为多维数组
  * @template T
  * @param {Number} num - 多维数组的个数
  * @param {Array<T>} arr - 需要转换的数组
  * @return {Array<T>} - iconsArr 多维数组
  * */
-
-var arrTrans$1 = function (num, arr) {
+function arrTrans (num, arr) {
   var iconsArr = [];
   arr.forEach(function (item, index) {
     var page = Math.floor(index / num);
@@ -27,7 +22,7 @@ var arrTrans$1 = function (num, arr) {
     iconsArr[page].push(item);
   });
   return iconsArr
-};/**
+}/**
  * 同步 try catch 的进一步封装处理
  * @template T
  * @param {Promise<T>} promise - 需要处理的promise方法
@@ -37,20 +32,18 @@ var arrTrans$1 = function (num, arr) {
  * if(res) 成功
  * if(err) 失败
  */
-
-var asyncTasks$1 = function (promise) {
+function asyncTasks (promise) {
   return promise
     .then(function (data) {
       return [null, data]
     })
     .catch(function (err) { return [err]; })
-};/**
+}/**
  * 校验车牌号
  * @param {String} data - 车牌号
  * @return {Boolean} - false: 错误  true: 正确
  */
-
-var checkCarNumber$1 = function (data) {
+function checkCarNumber (data) {
   var reg =
     /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-HJ-NP-Z][A-HJ-NP-Z0-9]{4,5}[A-HJ-NP-Z0-9挂学警港澳]$/;
   if (reg.test(data)) {
@@ -58,39 +51,36 @@ var checkCarNumber$1 = function (data) {
   } else {
     return false
   }
-};/**
+}/**
  * 校验邮编
  * @param {String} data - 邮编
  * @return {Boolean} - false: 错误  true: 正确
  */
-
-var checkCodeNumber$1 = function (data) {
+function checkCodeNumber (data) {
   var reg = /^[0-9]{6}$/;
   if (reg.test(data)) {
     return true
   } else {
     return false
   }
-};/**
+}/**
  * 统一社会信用代码
  * @param {String} data - 统一社会信用代码
  * @return {Boolean} - false: 错误  true: 正确
  */
-
-var checkCompanyIdCard$1 = function (data) {
+function checkCompanyIdCard (data) {
   var reg = /^[0-9A-HJ-NPQRTUWXY]{2}\d{6}[0-9A-HJ-NPQRTUWXY]{10}$/;
   if (reg.test(data)) {
     return true
   } else {
     return false
   }
-};/**
+}/**
  * 校验邮箱
  * @param {String} data - 邮箱
  * @return {Boolean} - false: 错误  true: 正确
  */
-
-var checkEmail$1 = function (data) {
+function checkEmail (data) {
   var reg =
     /^(([^<>()[\]\.,;:\s@"]+(\.[^<>()[\]\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (reg.test(data)) {
@@ -98,13 +88,12 @@ var checkEmail$1 = function (data) {
   } else {
     return false
   }
-};/**
+}/**
  * 验证身份证号码是否合法
  * @param {String} data - 身份证号
  * @return {Boolean} - false: 不合法 true: 合法
  */
-
-var checkIdcard$1 = function (data) {
+function checkIdcard (data) {
   var num = data.toUpperCase();
   //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。
   if (!/(^\d{15}$)|(^\d{17}([0-9]|X)$)/.test(num)) {
@@ -174,13 +163,12 @@ var checkIdcard$1 = function (data) {
     }
   }
   return false
-};/**
+}/**
  * 校验纬度
  * @param {String | Number} latitude - 纬度
  * @return {Boolean} - false: 错误  true: 正确
  */
-
-var checkLat$1 = function (latitude) {
+function checkLat (latitude) {
   latitude = String(latitude);
   //纬度,整数部分为0-90小数部分为0到6位
   var latreg = /^(\-|\+)?([0-8]?\d{1}\.\d{0,6}|90\.0{0,6}|[0-8]?\d{1}|90)$/;
@@ -188,13 +176,12 @@ var checkLat$1 = function (latitude) {
     return false
   }
   return true
-};/**
+}/**
  * 校验经度
  * @param {String | Number} longitude - 经度
  * @return {Boolean} - false: 错误  true: 正确
  */
-
-var checkLong$1 = function (longitude) {
+function checkLong (longitude) {
   longitude = String(longitude);
   //经度，整数部分为0-180小数部分为0到6位
   var longreg =
@@ -203,52 +190,47 @@ var checkLong$1 = function (longitude) {
     return false
   }
   return true
-};/**
+}/**
  * 校验电话号码
  * @param {String} data - 电话号码
  * @return {Boolean} - false: 错误  true: 正确
  */
-
-var checkPhone$1 = function (data) {
+function checkPhone (data) {
   var reg = /^(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
   if (reg.test(data)) {
     return true
   } else {
     return false
   }
-};/**
+}/**
  * 判断数据是否是 String 类型
- * @param {Any} val - 要判断的数据
+ * @param {any} val - 要判断的数据
  * @return {Boolean} - true：是；false：不是；
  */
-
-var isString$2 = function (val) {
+function isString (val) {
   return Object.prototype.toString.call(val) === '[object String]'
-};var isString$1 = isString$2;
-/**
+}/**
  * 合并 baseURL 和相对 URL 成一个完整的 URL
  * @param {String} baseURL - baseURL
  * @param {String} relativeURL - 相对 URL
  * @return {String} - 返回组合后的完整 URL
  */
-var combineURLs$1 = function (baseURL, relativeURL) {
-  return relativeURL && isString$1(relativeURL) && isString$1(baseURL)
+function combineURLs (baseURL, relativeURL) {
+  return relativeURL && isString(relativeURL) && isString(baseURL)
     ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
     : baseURL
-};/**
+}/**
  * 精确判断数据是否是 Object 类型
- * @param {Any} val - 要判断的数据
+ * @param {any} val - 要判断的数据
  * @return {Boolean} - true：是；false：不是；
  */
-
-var isObject$3 = function (val) {
+function isObject (val) {
   return (
     Object.prototype.toString.call(val) === '[object Object]' && val !== null && val !== undefined
   )
-};/* 从Node.js中检测变量global */
-
+}/* 从Node.js中检测变量global */
 var freeGlobal =
-  typeof commonjsGlobal === 'object' && commonjsGlobal !== null && commonjsGlobal.Object === Object && commonjsGlobal;
+  typeof global === 'object' && global !== null && global.Object === Object && global;
 
 /** 检测变量 globalThis */
 var freeGlobalThis =
@@ -258,12 +240,7 @@ var freeGlobalThis =
 var freeSelf = typeof self === 'object' && self !== null && self.Object === Object && self;
 
 /** root 用作对全局对象的引用 */
-var root$1 = freeGlobalThis || freeGlobal || freeSelf || Function('return this')();
-
-var root_1 = root$1;var isObject$2 = isObject$3;
-var root = root_1;
-
-/**
+var root = freeGlobalThis || freeGlobal || freeSelf || Function('return this')();/**
  * @param {Function} func - 需要防抖处理的方法
  * @param {number} [wait=0] - 延迟的毫秒数
  * @param {Object} [options={}] - 选项对象
@@ -272,7 +249,7 @@ var root = root_1;
  * @param {boolean} [options.trailing=true] - 指定在延迟结束后调用
  * @returns {Function} - 返回新的防抖方法
  */
-var debounce$2 = function (func, wait, options) {
+function debounce (func, wait, options) {
   var lastArgs, lastThis, maxWait, result, timerId, lastCallTime;
 
   var lastInvokeTime = 0;
@@ -285,11 +262,16 @@ var debounce$2 = function (func, wait, options) {
   if (typeof func !== 'function') {
     throw new TypeError('Expected a function')
   }
+  // @ts-ignore
   wait = +wait || 0;
-  if (isObject$2(options)) {
+  if (isObject(options)) {
+    // @ts-ignore
     leading = !!options.leading;
+    // @ts-ignore
     maxing = 'maxWait' in options;
+    // @ts-ignore
     maxWait = maxing ? Math.max(+options.maxWait || 0, wait) : maxWait;
+    // @ts-ignore
     trailing = 'trailing' in options ? !!options.trailing : trailing;
   }
 
@@ -327,6 +309,7 @@ var debounce$2 = function (func, wait, options) {
   function remainingWait(time) {
     var timeSinceLastCall = time - lastCallTime;
     var timeSinceLastInvoke = time - lastInvokeTime;
+    // @ts-ignore
     var timeWaiting = wait - timeSinceLastCall;
 
     return maxing ? Math.min(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting
@@ -337,6 +320,7 @@ var debounce$2 = function (func, wait, options) {
     var timeSinceLastInvoke = time - lastInvokeTime;
     return (
       lastCallTime === undefined ||
+      // @ts-ignore
       timeSinceLastCall >= wait ||
       timeSinceLastCall < 0 ||
       (maxing && timeSinceLastInvoke >= maxWait)
@@ -405,14 +389,13 @@ var debounce$2 = function (func, wait, options) {
   debounced.flush = flush;
   debounced.pending = pending;
   return debounced
-};/**
+}/**
  * 深层合并对象，只支持合并两个对象，该方法不会改变原有的对象
  * @param {Object} FirstOBJ - 第一个对象
  * @param {Object} SecondOBJ - 第二个对象
  * @returns {Object} - 返回深层合并后的对象
  */
-
-var deepMargeObject$1 = function (FirstOBJ, SecondOBJ) {
+function deepMargeObject (FirstOBJ, SecondOBJ) {
   function deepMargeObject(FirstOBJ, SecondOBJ) {
     var ResultOBJ = {};
     for (var key in FirstOBJ) {
@@ -430,13 +413,12 @@ var deepMargeObject$1 = function (FirstOBJ, SecondOBJ) {
     return ResultOBJ
   }
   return deepMargeObject(FirstOBJ, SecondOBJ)
-};/**
+}/**
  * base64加密字符串
  * @param {String} input - 未加密前的字符串
  * @returns {String} - 加密后的字符串
  */
-
-var encodeBase64$1 = function (input) {
+function encodeBase64 (input) {
   var keyStr =
     'ABCDEFGHIJKLMNOP' + 'QRSTUVWXYZabcdef' + 'ghijklmnopqrstuv' + 'wxyz0123456789+/' + '=';
   var output = '';
@@ -468,13 +450,12 @@ var encodeBase64$1 = function (input) {
   } while (i < input.length)
 
   return output
-};/**
+}/**
  * base64解密字符串
  * @param {String} input - 未解密前的字符串
  * @returns {String} - 解密后的字符串
  */
-
-var decodeBase64$1 = function (input) {
+function decodeBase64 (input) {
   var keyStr =
     'ABCDEFGHIJKLMNOP' + 'QRSTUVWXYZabcdef' + 'ghijklmnopqrstuv' + 'wxyz0123456789+/' + '=';
   var output = '';
@@ -520,7 +501,7 @@ var decodeBase64$1 = function (input) {
     enc1 = enc2 = enc3 = enc4 = '';
   } while (i < input.length)
   return unescape(output)
-};/**
+}/**
  * @typedef ReturnType
  * @property {Number} YYYY - 年
  * @property {String} MM - 月
@@ -555,7 +536,7 @@ var decodeBase64$1 = function (input) {
  * @param {Date | String} date - 日期或日期字符串
  * @return {ReturnType} - 各种时间日期格式,支持自定义拼接key
  */
-var formatDate$1 = function (date) {
+function formatDate (date) {
   var YYYY = null;
   var M = null;
   var MM = null;
@@ -684,13 +665,12 @@ var formatDate$1 = function (date) {
       'YYYY（年），MM（月，补0），M（月，不补0），DD（日，补0），D（日，不补0），hh（时，补0），h（时，不补0），mm（分，补0），m（分，不补0），ss（秒，补0），s（秒，不补0），ms（毫秒，不补0），ms2（毫秒，补0到2位），ms3（毫秒，补0到3位），ms4（毫秒，补0到4位），其余的f1，f2，... 看格式就知道了！',
   };
   return result
-};/**
+}/**
  * @param {Date | String | Number} time - 需要转换的时间
  * @param {String} fmt - 需要转换的格式 如 YYYY-MM-DD YYYY-MM-DD HH:mm:ss
  * @returns {String} - 格式化后的日期时间
  */
-
-var dateFormat$1 = function (time, fmt) {
+function dateFormat (time, fmt) {
   if (!time) { return '' }
   else {
     var date = new Date(time);
@@ -715,14 +695,13 @@ var dateFormat$1 = function (time, fmt) {
     }
     return fmt
   }
-};/**
+}/**
  * 计算两个时间的间隔
  * @param {Number} e - 开始时间戳
  * @param {Number} t - 结束时间戳
  * @return {String} - 1,12,15,13 天时分秒  过期返回空
  */
-
-var getTimeInterval$1 = function (e, t) {
+function getTimeInterval (e, t) {
   var r = [0, 0, 0, 0],
     n = '',
     o = t > e ? parseInt((t - e) / 1e3) : 0;
@@ -738,13 +717,12 @@ var getTimeInterval$1 = function (e, t) {
     (n += r[0] <= 0 && r[1] <= 0 && r[2] <= 0 ? '' : r[2] + ','),
     (n += r[0] <= 0 && r[1] <= 0 && r[2] <= 0 && r[3] <= 0 ? '' : r[3])
   )
-};/**
+}/**
  * 获取url路径的query参数
  * @param {String} url - url
  * @returns {Object} - query参数的对象
  */
-
-var getUrlQuery$1 = function (url) {
+function getUrlQuery (url) {
   if (url.indexOf('?') == -1) { return }
   var theRequest = new Object();
   var str = url.split('?')[1];
@@ -753,63 +731,56 @@ var getUrlQuery$1 = function (url) {
     theRequest[strs[i].split('=')[0]] = strs[i].split('=')[1];
   }
   return theRequest
-};/**
+}/**
  * 判断 URL 是否是绝对 URL。
  * @param {String} url - 要判断的 URL
  * @return {Boolean} - true：是绝对URL；false：不是绝对URL；
  */
-
-var isAbsoluteURL$1 = function (url) {
+function isAbsoluteURL (url) {
   // 如果 URL 以 “<scheme>：//” 或 “//”（协议相对URL）开头，则认为它是绝对的
   // RFC 3986 将方案名称定义为以字母开头的字符序列，然后是字母，数字，加号，句点或连字符的任意组合
   return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url)
-};/**
+}/**
  * 判断数据是否是 Array 类型
- * @param {Any} val - 要判断的数据
+ * @param {any} val - 要判断的数据
  * @return {Boolean} - true：是；false：不是；
  */
-
-var isArray$2 = function (val) {
+function isArray (val) {
   return Object.prototype.toString.call(val) === '[object Array]'
-};/**
+}/**
  * 精确判断数据是否是 Boolean 类型
- * @param {Any} val - 要判断的数据
+ * @param {any} val - 要判断的数据
  * @return {Boolean} - true：是；false：不是；
  */
-
-var isBoolean$1 = function (val) {
+function isBoolean (val) {
   return Object.prototype.toString.call(val) === '[object Boolean]'
-};/**
+}/**
  * 精确判断数据是否是 Date 类型
- * @param {Any} val - 要判断的数据
+ * @param {any} val - 要判断的数据
  * @return {Boolean} - true：是；false：不是；
  */
-
-var isDate$1 = function (val) {
+function isDate (val) {
   return Object.prototype.toString.call(val) === '[object Date]'
-};/**
+}/**
  * 精确判断数据是否是 Function 类型
- * @param {Any} val - 要判断的数据
+ * @param {any} val - 要判断的数据
  * @return {Boolean} - true：是；false：不是；
  */
-
-var isFunction$1 = function (val) {
+function isFunction (val) {
   return Object.prototype.toString.call(val) === '[object Function]'
-};/**
+}/**
  * 精确判断数据是否是 Number 类型
- * @param {Any} val - 要判断的数据
+ * @param {any} val - 要判断的数据
  * @return {Boolean} - true：是；false：不是；
  */
-
-var isNumber$1 = function (val) {
+function isNumber (val) {
   return Object.prototype.toString.call(val) === '[object Number]'
-};/**
+}/**
  * 数字转中文
  * @param {Number} num - 数字
  * @returns {String} - 转中文的值
  */
-
-var numberToChinese$1 = function (num) {
+function numberToChinese (num) {
   if (!/^\d*(\.\d*)?$/.test(num)) { return 'Number is wrong!' }
   var AA = new Array('零', '一', '二', '三', '四', '五', '六', '七', '八', '九');
   var BB = new Array('', '十', '百', '千', '万', '亿', '点', '');
@@ -840,53 +811,48 @@ var numberToChinese$1 = function (num) {
     for (var i$1 = 0; i$1 < a[1].length; i$1++) { re += AA[a[1].charAt(i$1)]; }
   }
   return re
-};/**
+}/**
  * @returns {String} - 随机生成十六进制颜色值
  */
-
-var randomHexColor$1 = function () {
+function randomHexColor () {
   var hex = Math.floor(Math.random() * 16777216).toString(16);
   while (hex.length < 6) {
     hex = '0' + hex;
   }
   return '#' + hex
-};/**
+}/**
  * 获取俩数之间的随机整数(包头包尾)
  * @param {Number} minNum - 最小整数
  * @param {Number} maxNum - 最大整数
  * @returns {Number} - 随机数
  */
-
-var randomNum$1 = function (minNum, maxNum) {
+function randomNum (minNum, maxNum) {
   return parseInt(Math.random() * (maxNum - minNum + 1) + minNum)
-};/**
+}/**
  * @returns {String} - 随机生成RGBA颜色
  */
-
-var randomRgbaColor$1 = function () {
+function randomRgbaColor () {
   var r = Math.floor(Math.random() * 256);
   var g = Math.floor(Math.random() * 256);
   var b = Math.floor(Math.random() * 256);
   var alpha = Math.random(); //随机生成1以内a值
   alpha = alpha.toFixed(2);
   return ("rgba(" + r + "," + g + "," + b + "," + alpha + ")")
-};/**
+}/**
  * @returns {String} - 随机生成RGB颜色
  */
-
-var randomRgbColor$1 = function () {
+function randomRgbColor () {
   var r = Math.floor(Math.random() * 256);
   var g = Math.floor(Math.random() * 256);
   var b = Math.floor(Math.random() * 256);
   return ("rgb(" + r + "," + g + "," + b + ")")
-};/**
+}/**
  * 生成指定长度的随机字符串
  * @param {Number} min - 最小长度
  * @param {Number} max - 最大长度
  * @returns {String} - 返回生成的字符串
  */
-
-var randomString$1 = function (min, max) {
+function randomString (min, max) {
   var returnStr = '',
     range = max ? Math.round(Math.random() * (max - min)) + min : min,
     arr = [
@@ -957,12 +923,11 @@ var randomString$1 = function (min, max) {
     returnStr += arr[index];
   }
   return returnStr
-};/**
+}/**
  * 本月第一天
  * @returns - 本月第一天的 年-月-日
  */
-
-var showMonthFirstDay$1 = function () {
+function showMonthFirstDay () {
   var Nowdate = new Date();
   var MonthFirstDay = new Date(Nowdate.getYear(), Nowdate.getMonth(), 1);
   var M = Number(MonthFirstDay.getMonth()) + 1;
@@ -974,12 +939,11 @@ var showMonthFirstDay$1 = function () {
     day = '0' + day;
   }
   return Nowdate.getFullYear() + '-' + M + '-' + day
-};/**
+}/**
  * 本月最后一天
  * @returns - 本月最后一天的 年-月-日
  */
-
-var showMonthLastDay$1 = function () {
+function showMonthLastDay () {
   var Nowdate = new Date();
   var MonthNextFirstDay = new Date(Nowdate.getYear(), Nowdate.getMonth() + 1, 1);
   var MonthLastDay = new Date(MonthNextFirstDay - 86400000);
@@ -992,12 +956,11 @@ var showMonthLastDay$1 = function () {
     day = '0' + day;
   }
   return Nowdate.getFullYear() + '-' + M + '-' + day
-};/**
+}/**
  * 本周第一天
  * @returns - 本周第一天的日期时间
  */
-
-var showWeekFirstDay$1 = function () {
+function showWeekFirstDay () {
   var Nowdate = new Date();
   var numDay = Nowdate.getDay();
   // 处理本周第一天是周一（不处理的话第一天是周日）
@@ -1016,12 +979,11 @@ var showWeekFirstDay$1 = function () {
     day = '0' + day;
   }
   return WeekFirstDay.getFullYear() + '-' + M + '-' + day
-};/**
+}/**
  * 本周最后一天
  * @returns - 本周最后一天的日期时间
  */
-
-var showWeekLastDay$1 = function () {
+function showWeekLastDay () {
   var Nowdate = new Date();
   var numDay = Nowdate.getDay();
   // 处理本周第一天是周一（不处理的话第一天是周日）
@@ -1041,14 +1003,13 @@ var showWeekLastDay$1 = function () {
     day = '0' + day;
   }
   return WeekLastDay.getFullYear() + '-' + M + '-' + day
-};/**
+}/**
  * 按ascii码从小到大排序对象（根据Key）
  * 一般第三方接口签名生成需要用到
  * @param {Object} obj - 传入需要排序的对象
  * @returns {String} - 输出排序好的字符串
  */
-
-var sortAscii$1 = function (obj) {
+function sortAscii (obj) {
   var arr = new Array();
   var num = 0;
   for (var i in obj) {
@@ -1063,10 +1024,7 @@ var sortAscii$1 = function (obj) {
   var char = '&';
   str = str.replace(new RegExp('^\\' + char + '+|\\' + char + '+$', 'g'), '');
   return str
-};var debounce$1 = debounce$2;
-var isObject$1 = isObject$3;
-
-/**
+}/**
  * @param {Function} func - 需要节流处理的方法
  * @param {number} [wait=0] - 延迟的毫秒数
  * @param {Object} [options={}] - 选项对象
@@ -1074,31 +1032,32 @@ var isObject$1 = isObject$3;
  * @param {boolean} [options.trailing=true] - 指定调用在节流结束后
  * @returns {Function} 返回新的节流方法
  */
-var throttle$1 = function (func, wait, options) {
+function throttle (func, wait, options) {
   var leading = true;
   var trailing = true;
 
   if (typeof func !== 'function') {
     throw new TypeError('Expected a function')
   }
-  if (isObject$1(options)) {
+  if (isObject(options)) {
+    // @ts-ignore
     leading = 'leading' in options ? !!options.leading : leading;
+    // @ts-ignore
     trailing = 'trailing' in options ? !!options.trailing : trailing;
   }
-  return debounce$1(func, wait, {
+  return debounce(func, wait, {
     leading: leading,
     trailing: trailing,
     maxWait: wait,
   })
-};/**
+}/**
  * 扁平数据转树形数据
  * @param {Object} data - 数据源
  * @param {String} [id] - id字段 默认 'id'
  * @param {String} [parentId] - 父节点字段 默认 'pid'
  * @param {String} [children] - 孩子节点字段 默认 'children'
  */
-
-var treeDataTranslate$1 = function (data, id, parentId, children) {
+function treeDataTranslate (data, id, parentId, children) {
   var config = {
     id: id || 'id',
     parentId: parentId || 'pid',
@@ -1140,13 +1099,12 @@ var treeDataTranslate$1 = function (data, id, parentId, children) {
     }
   }
   return tree
-};/**
+}/**
  * 树形数据转扁平数据
  * @param {Object} data - 数据源
  * @param {String} [children] - 孩子节点字段 默认 'children'
  */
-
-var treeDataTranslateFlat$1 = function (data, children) {
+function treeDataTranslateFlat (data, children) {
   var config = {
     children: children || 'children',
   };
@@ -1168,15 +1126,14 @@ var treeDataTranslateFlat$1 = function (data, children) {
     loop(item);
   });
   return result
-};/**
+}/**
  * 创建UUID
  * @param {Number} len - uuid的长度
  * @param {Boolean} firstU - 将返回的首字母置为"u"
  * @param {Nubmer} radix - 生成uuid的基数(意味着返回的字符串都是这个基数),2-二进制,8-八进制,10-十进制,16-十六进制
  * @returns {string} -  uuid
  */
-
-var createUUID$1 = function (len, firstU, radix) {
+function createUUID (len, firstU, radix) {
   if ( len === void 0 ) len = 32;
   if ( firstU === void 0 ) firstU = true;
   if ( radix === void 0 ) radix = null;
@@ -1205,7 +1162,7 @@ var createUUID$1 = function (len, firstU, radix) {
   } else {
     return uuid.join('')
   }
-};/*
+}/*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
  * Digest Algorithm, as defined in RFC 1321.
  * Version 2.2 Copyright (C) Paul Johnston 1999 - 2009
@@ -1450,121 +1407,27 @@ function bit_rol(num, cnt) {
  * @param {String} str - 需要md5的值
  * @returns {String} - md5后的值
  */
-var md5$1 = function (str) {
+function md5 (str) {
   return hex_md5(str)
-};var isArray$1 = isArray$2;
-
-/**
+}/**
  * 数组降维，将多维数组转换为一维数组
  * @template T
  * @param {Array<T>} array - 需要变平的数组
  * @returns {Array<T>} - 返回扁平的数组
  */
-var flatten$1 = function (array) {
+function flatten (array) {
   var result = [];
   _flatten(array, result);
   return result
-};
+}
 
 function _flatten(array, result) {
   for (var i = 0; i < array.length; i++) {
     var value = array[i];
-    if (isArray$1(value)) {
+    if (isArray(value)) {
       _flatten(value, result);
     } else {
       result.push(value);
     }
   }
-}var arrTrans = arrTrans$1;
-var asyncTasks = asyncTasks$1;
-var checkCarNumber = checkCarNumber$1;
-var checkCodeNumber = checkCodeNumber$1;
-var checkCompanyIdCard = checkCompanyIdCard$1;
-var checkEmail = checkEmail$1;
-var checkIdcard = checkIdcard$1;
-var checkLat = checkLat$1;
-var checkLong = checkLong$1;
-var checkPhone = checkPhone$1;
-var combineURLs = combineURLs$1;
-var debounce = debounce$2;
-var deepMargeObject = deepMargeObject$1;
-var encodeBase64 = encodeBase64$1;
-var decodeBase64 = decodeBase64$1;
-var formatDate = formatDate$1;
-var dateFormat = dateFormat$1;
-var getTimeInterval = getTimeInterval$1;
-var getUrlQuery = getUrlQuery$1;
-var isAbsoluteURL = isAbsoluteURL$1;
-var isArray = isArray$2;
-var isBoolean = isBoolean$1;
-var isDate = isDate$1;
-var isFunction = isFunction$1;
-var isNumber = isNumber$1;
-var isObject = isObject$3;
-var isString = isString$2;
-var numberToChinese = numberToChinese$1;
-var randomHexColor = randomHexColor$1;
-var randomNum = randomNum$1;
-var randomRgbaColor = randomRgbaColor$1;
-var randomRgbColor = randomRgbColor$1;
-var randomString = randomString$1;
-var showMonthFirstDay = showMonthFirstDay$1;
-var showMonthLastDay = showMonthLastDay$1;
-var showWeekFirstDay = showWeekFirstDay$1;
-var showWeekLastDay = showWeekLastDay$1;
-var sortAscii = sortAscii$1;
-var throttle = throttle$1;
-var treeDataTranslate = treeDataTranslate$1;
-var treeDataTranslateFlat = treeDataTranslateFlat$1;
-var createUUID = createUUID$1;
-var md5 = md5$1;
-var flatten = flatten$1;
-
-var main = {
-  arrTrans: arrTrans,
-  asyncTasks: asyncTasks,
-  checkCarNumber: checkCarNumber,
-  checkCodeNumber: checkCodeNumber,
-  checkCompanyIdCard: checkCompanyIdCard,
-  checkEmail: checkEmail,
-  checkIdcard: checkIdcard,
-  checkLat: checkLat,
-  checkLong: checkLong,
-  checkPhone: checkPhone,
-  combineURLs: combineURLs,
-  debounce: debounce,
-  deepMargeObject: deepMargeObject,
-  encodeBase64: encodeBase64,
-  decodeBase64: decodeBase64,
-  formatDate: formatDate,
-  dateFormat: dateFormat,
-  getTimeInterval: getTimeInterval,
-  getUrlQuery: getUrlQuery,
-  isAbsoluteURL: isAbsoluteURL,
-  isArray: isArray,
-  isBoolean: isBoolean,
-  isDate: isDate,
-  isFunction: isFunction,
-  isNumber: isNumber,
-  isObject: isObject,
-  isString: isString,
-  numberToChinese: numberToChinese,
-  randomHexColor: randomHexColor,
-  randomNum: randomNum,
-  randomRgbaColor: randomRgbaColor,
-  randomRgbColor: randomRgbColor,
-  randomString: randomString,
-  showMonthFirstDay: showMonthFirstDay,
-  showMonthLastDay: showMonthLastDay,
-  showWeekFirstDay: showWeekFirstDay,
-  showWeekLastDay: showWeekLastDay,
-  sortAscii: sortAscii,
-  throttle: throttle,
-  treeDataTranslate: treeDataTranslate,
-  treeDataTranslateFlat: treeDataTranslateFlat,
-  createUUID: createUUID,
-  md5: md5,
-  flatten: flatten,
-};
-
-var main$1 = /*@__PURE__*/getDefaultExportFromCjs(main);export{main$1 as default};
+}export{arrTrans,asyncTasks,checkCarNumber,checkCodeNumber,checkCompanyIdCard,checkEmail,checkIdcard,checkLat,checkLong,checkPhone,combineURLs,createUUID,dateFormat,debounce,decodeBase64,deepMargeObject,encodeBase64,flatten,formatDate,getTimeInterval,getUrlQuery,isAbsoluteURL,isArray,isBoolean,isDate,isFunction,isNumber,isObject,isString,md5,numberToChinese,randomHexColor,randomNum,randomRgbColor,randomRgbaColor,randomString,showMonthFirstDay,showMonthLastDay,showWeekFirstDay,showWeekLastDay,sortAscii,throttle,treeDataTranslate,treeDataTranslateFlat};

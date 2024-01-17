@@ -5,7 +5,7 @@
  * @param {Array<T>} arr - 需要转换的数组
  * @return {Array<T>} - iconsArr 多维数组
  * */
-module.exports = (num, arr) => {
+export default (num, arr) => {
   const iconsArr = []
   arr.forEach((item, index) => {
     const page = Math.floor(index / num)

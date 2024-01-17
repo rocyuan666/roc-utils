@@ -33,7 +33,7 @@
  * @param {Date | String} date - 日期或日期字符串
  * @return {ReturnType} - 各种时间日期格式,支持自定义拼接key
  */
-module.exports = (date) => {
+export default (date) => {
   let YYYY = null
   let M = null
   let MM = null

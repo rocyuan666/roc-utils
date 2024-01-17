@@ -4,10 +4,10 @@
  * @Description  : rollup config
  */
 
-const { rollup } = require('rollup')
-const buble = require('@rollup/plugin-buble')
-const commonjs = require('@rollup/plugin-commonjs')
-const { umdOutputOptions, umdMinOutputOptions, esOutputOptions } = require('./outputOptions')
+import { rollup } from 'rollup'
+import buble from '@rollup/plugin-buble'
+import commonjs from '@rollup/plugin-commonjs'
+import { umdOutputOptions, umdMinOutputOptions, esOutputOptions } from './outputOptions.js'
 
 rollup({
   input: './src/main.js',

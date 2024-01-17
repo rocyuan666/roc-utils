@@ -3,7 +3,7 @@
  * @param {String} url - url
  * @returns {Object} - query参数的对象
  */
-module.exports = (url) => {
+export default (url) => {
   if (url.indexOf('?') == -1) return
   const theRequest = new Object()
   const str = url.split('?')[1]

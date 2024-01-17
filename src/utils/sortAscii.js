@@ -4,7 +4,7 @@
  * @param {Object} obj - 传入需要排序的对象
  * @returns {String} - 输出排序好的字符串
  */
-module.exports = (obj) => {
+export default (obj) => {
   let arr = new Array()
   let num = 0
   for (let i in obj) {

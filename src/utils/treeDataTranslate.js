@@ -5,7 +5,7 @@
  * @param {String} [parentId] - 父节点字段 默认 'pid'
  * @param {String} [children] - 孩子节点字段 默认 'children'
  */
-module.exports = (data, id, parentId, children) => {
+export default (data, id, parentId, children) => {
   let config = {
     id: id || 'id',
     parentId: parentId || 'pid',

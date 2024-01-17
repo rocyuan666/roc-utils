@@ -3,7 +3,7 @@
  * @param {String | Number} longitude - 经度
  * @return {Boolean} - false: 错误  true: 正确
  */
-module.exports = (longitude) => {
+export default (longitude) => {
   longitude = String(longitude)
   //经度，整数部分为0-180小数部分为0到6位
   var longreg =

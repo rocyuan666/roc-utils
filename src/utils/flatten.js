@@ -1,4 +1,4 @@
-const isArray = require('./isArray')
+import isArray from './isArray.js'
 
 /**
  * 数组降维，将多维数组转换为一维数组
@@ -6,7 +6,7 @@ const isArray = require('./isArray')
  * @param {Array<T>} array - 需要变平的数组
  * @returns {Array<T>} - 返回扁平的数组
  */
-module.exports = (array) => {
+export default (array) => {
   var result = []
   _flatten(array, result)
   return result
