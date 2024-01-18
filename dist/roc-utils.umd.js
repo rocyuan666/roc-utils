@@ -1,6 +1,6 @@
 /*
   * 常用javascript utils 方法
-  * roc-utils v2.0.3
+  * roc-utils v2.0.2
   * (c) 2020-2024 rocyuan
   * Email rocyuan666@163.com
   * Released under the MIT License.
