@@ -1,8 +1,8 @@
 /**
  * 功能示例
  */
-// import * as rocUtils from '../src/main.js' // debug
-import * as rocUtils from '../dist/roc-utils.es.js' // dist
+import * as rocUtils from '../src/main.js' // debug
+// import * as rocUtils from '../dist/roc-utils.es.js' // dist
 
 // 一维数组转换为多维数组
 arrTransT()
