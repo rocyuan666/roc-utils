@@ -1,6 +1,6 @@
 declare module 'roc-utils' {
   export function arrTrans(num: number, arr: Array<any>): Array<any>
-  export function asyncTasks(func: () => Promise<any>): Promise<[any, any]>
+  export function asyncTasks(func: Promise<any>): Promise<[any, any]>
   export function checkCarNumber(data: string): boolean
   export function checkCodeNumber(data: string): boolean
   export function checkCompanyIdCard(data: string): boolean
